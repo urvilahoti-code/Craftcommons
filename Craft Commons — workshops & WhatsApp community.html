@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Craft Commons — sustainable craft workshops by Haati</title>
+<meta name="description" content="Book a sustainable craft workshop and join the Craft Commons WhatsApp community to keep making after the session ends.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --indigo:#22306B; --indigo-deep:#172150; --indigo-soft:#3A4C98;
+  --paper:#F7F6F2; --surface:#FFFFFF; --ink:#1C1F2A; --muted:#5B5F6E;
+  --line:#DAD7CE; --turmeric:#E2A32A; --leaf:#1F7A55; --leaf-ink:#FFFFFF;
+  --madder:#A63A2E; --chip:#ECEAE3;
+  --serif:"Young Serif", Georgia, "Times New Roman", serif;
+  --sans:"Karla", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#12152A; --surface:#1B2040; --ink:#ECEAE3; --muted:#A9ACBA;
+    --line:#2E3560; --chip:#252B52; --leaf:#2A9A6C; --madder:#E07A6C;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#12152A; --surface:#1B2040; --ink:#ECEAE3; --muted:#A9ACBA;
+  --line:#2E3560; --chip:#252B52; --leaf:#2A9A6C; --madder:#E07A6C;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:1.0625rem;line-height:1.55;-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--turmeric);outline-offset:3px;border-radius:4px}
+.wrap{max-width:72rem;margin:0 auto;padding:0 1.25rem}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.12;margin:0}
+h2{font-size:clamp(1.75rem,3.5vw,2.5rem)}
+p{margin:0}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:.6rem;font:700 1rem/1 var(--sans);padding:.95rem 1.35rem;border-radius:999px;border:2px solid transparent;text-decoration:none;cursor:pointer;transition:transform .15s ease, background .15s ease}
+.btn:active{transform:scale(.98)}
+.btn-wa{background:var(--leaf);color:var(--leaf-ink)}
+.btn-wa:hover{background:#18664a}
+.btn-light{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)}
+.btn-light:hover{background:rgba(255,255,255,.1)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--ink)}
+.wa-icon{width:1.2rem;height:1.2rem;flex:none}
+
+/* Top bar */
+.bar{position:absolute;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:3}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:1rem;padding-bottom:1rem}
+.brand{font-family:var(--serif);font-size:1.25rem;color:#fff;text-decoration:none}
+.brand small{font-family:var(--sans);font-size:.8rem;opacity:.75;margin-left:.4rem}
+.bar nav{display:flex;gap:1.25rem}
+.bar nav a{color:#fff;text-decoration:none;font-weight:500;font-size:.95rem;opacity:.9}
+.bar nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:4px}
+@media (max-width:640px){.bar nav{display:none}}
+
+/* Hero: hand-stamped block print */
+.hero{position:relative;background:var(--indigo-deep);color:#fff;overflow:hidden;min-height:clamp(34rem,86vh,48rem);display:flex;align-items:flex-end}
+.print{position:absolute;inset:0;width:100%;height:100%}
+.print use{fill:var(--indigo-soft);transform-box:fill-box;transform-origin:center}
+.print .stamp{opacity:0;animation:stamp .5s cubic-bezier(.2,.9,.3,1.2) forwards}
+@keyframes stamp{0%{opacity:0;transform:scale(1.18)}60%{opacity:.95}100%{opacity:var(--o,.8);transform:scale(1) rotate(var(--r,0deg))}}
+@media (prefers-reduced-motion: reduce){.print .stamp{animation:none;opacity:var(--o,.8);transform:rotate(var(--r,0deg))}}
+.hero-panel{position:relative;z-index:2;background:var(--indigo);padding:2.25rem 1.75rem 2.5rem;margin:6rem 0 0;max-width:37rem;border-top:6px solid var(--turmeric)}
+.hero h1{font-size:clamp(2.4rem,6vw,4.1rem);letter-spacing:-.01em}
+.hero-lede{margin-top:1.1rem;font-size:1.15rem;max-width:32rem;color:#E4E7F5}
+.hero-actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.75rem}
+.hero-note{margin-top:1.1rem;font-size:.9rem;color:#C3C9E6}
+@media (max-width:640px){.hero-panel{margin-left:-1.25rem;margin-right:-1.25rem;padding:2rem 1.25rem 2.25rem}}
+
+/* Sessions */
+section{padding:4.5rem 0}
+.sec-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:1rem 2rem;margin-bottom:1.75rem}
+.sec-head p{color:var(--muted);max-width:34rem;margin-top:.6rem}
+.filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}
+.chip{font:500 .95rem var(--sans);padding:.5rem .95rem;border-radius:999px;border:1.5px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.filter-group{display:flex;flex-wrap:wrap;gap:.5rem}
+.filter-sep{width:1px;background:var(--line);margin:0 .35rem}
+@media (max-width:640px){.filter-sep{display:none}}
+
+.sessions{list-style:none;margin:0;padding:0;border-top:1.5px solid var(--ink)}
+.session{display:grid;grid-template-columns:5.5rem 1fr auto;gap:1.25rem;align-items:center;padding:1.35rem 0;border-bottom:1px solid var(--line)}
+.date{text-align:center;line-height:1}
+.date .d{font-family:var(--serif);font-size:2.4rem;display:block}
+.date .m{font-size:.9rem;color:var(--muted);display:block;margin-top:.3rem}
+.s-title{font-family:var(--serif);font-size:1.35rem;line-height:1.2}
+.s-meta{color:var(--muted);font-size:.95rem;margin-top:.35rem;display:flex;flex-wrap:wrap;gap:.25rem 1rem}
+.s-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.6rem}
+.tag{font-size:.8rem;font-weight:500;padding:.2rem .6rem;border-radius:4px;background:var(--chip)}
+.s-side{text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:.5rem}
+.price{font-weight:700;font-size:1.1rem}
+.seats{font-size:.88rem;color:var(--muted)}
+.seats.low{color:var(--madder);font-weight:700}
+.book-btn{font:700 .95rem var(--sans);padding:.65rem 1.1rem;border-radius:999px;border:2px solid var(--ink);background:var(--ink);color:var(--paper);cursor:pointer}
+.book-btn.wait{background:transparent;color:var(--ink)}
+@media (max-width:700px){
+  .session{grid-template-columns:3.75rem 1fr;align-items:start}
+  .date .d{font-size:1.9rem}
+  .s-side{grid-column:2;flex-direction:row;align-items:center;justify-content:space-between;text-align:left;flex-wrap:wrap}
+}
+.empty{padding:2.5rem 0;color:var(--muted)}
+.empty button{margin-top:.8rem}
+
+/* How it works (true sequence) */
+.how{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.steps{list-style:none;margin:2rem 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;counter-reset:s}
+.steps li{counter-increment:s;position:relative;padding-top:3.25rem}
+.steps li::before{content:counter(s);position:absolute;top:0;left:0;font-family:var(--serif);font-size:2.4rem;line-height:1;color:var(--turmeric)}
+.steps h3{font-size:1.3rem;margin-bottom:.5rem}
+.steps p{color:var(--muted)}
+@media (max-width:760px){.steps{grid-template-columns:1fr;gap:1.5rem}}
+
+/* Community */
+.community{background:var(--leaf);color:#fff}
+.community .grid{display:grid;grid-template-columns:1.1fr 1fr;gap:3rem;align-items:center}
+.community h2{color:#fff}
+.community .lede{margin-top:1rem;font-size:1.15rem;color:#E1F2EA;max-width:32rem}
+.community .btn-join{background:#fff;color:#12553b;margin-top:1.75rem}
+.community .btn-join:hover{background:#EAF5EF}
+.gets{list-style:none;margin:0;padding:0}
+.gets li{padding:1rem 0;border-bottom:1px solid rgba(255,255,255,.25);display:grid;grid-template-columns:2.25rem 1fr;gap:.75rem}
+.gets li:first-child{border-top:1px solid rgba(255,255,255,.25)}
+.gets svg{width:1.6rem;height:1.6rem;stroke:#fff;fill:none;stroke-width:1.6}
+.gets strong{display:block;font-weight:700}
+.gets span{color:#D4ECE0;font-size:.97rem}
+.rules{margin-top:1.25rem;font-size:.9rem;color:#CBE7D9}
+@media (max-width:800px){.community .grid{grid-template-columns:1fr;gap:2rem}}
+
+/* Crafts */
+.crafts{display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:0;border-top:1px solid var(--line);border-left:1px solid var(--line);margin-top:2rem}
+.craft{padding:1.4rem 1.25rem;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.craft h3{font-size:1.2rem}
+.craft p{color:var(--muted);font-size:.95rem;margin-top:.4rem}
+
+/* Groups + FAQ */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem}
+@media (max-width:800px){.split{grid-template-columns:1fr;gap:3rem}}
+.groups p{color:var(--muted);margin-top:.8rem;max-width:30rem}
+.groups .btn{margin-top:1.5rem}
+details{border-bottom:1px solid var(--line);padding:1rem 0}
+details:first-of-type{border-top:1px solid var(--line)}
+summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:1rem}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--serif);font-size:1.3rem;line-height:1}
+details[open] summary::after{content:"–"}
+details p{color:var(--muted);margin-top:.6rem}
+
+footer{background:var(--indigo-deep);color:#C3C9E6;padding:2.5rem 0;font-size:.95rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem}
+footer strong{color:#fff;font-family:var(--serif);font-weight:400;font-size:1.15rem}
+
+/* Sticky mobile join bar */
+.mobile-cta{display:none}
+@media (max-width:640px){
+  .mobile-cta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:5;gap:.5rem;padding:.65rem 1rem calc(.65rem + env(safe-area-inset-bottom,0px));background:var(--surface);border-top:1px solid var(--line)}
+  .mobile-cta .btn{flex:1;justify-content:center;padding:.8rem .5rem;font-size:.95rem}
+  body{padding-bottom:4.5rem}
+}
+
+/* Booking dialog */
+dialog{border:none;padding:0;border-radius:14px;max-width:30rem;width:calc(100% - 2rem);background:var(--surface);color:var(--ink)}
+dialog::backdrop{background:rgba(15,20,50,.6)}
+.dlg-head{background:var(--indigo);color:#fff;padding:1.4rem 1.5rem;border-top:5px solid var(--turmeric)}
+.dlg-head h2{font-size:1.5rem}
+.dlg-head p{color:#D6DBF0;font-size:.95rem;margin-top:.35rem}
+.dlg-body{padding:1.4rem 1.5rem 1.5rem}
+.field{margin-bottom:1rem}
+.field label{display:block;font-weight:700;font-size:.95rem;margin-bottom:.35rem}
+.field input,.field select,.field textarea{width:100%;font:inherit;font-size:1rem;padding:.7rem .8rem;border-radius:8px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink)}
+.field textarea{min-height:4.5rem;resize:vertical}
+.field input[aria-invalid="true"]{border-color:var(--madder)}
+.err{color:var(--madder);font-size:.88rem;margin-top:.3rem;display:none}
+.err.show{display:block}
+.total{display:flex;justify-content:space-between;padding:.9rem 0;border-top:1px solid var(--line);margin-top:.25rem;font-weight:700}
+.terms{font-size:.85rem;color:var(--muted);margin-bottom:1.1rem}
+.dlg-actions{display:flex;gap:.6rem;flex-wrap:wrap}
+.dlg-actions .btn-wa{flex:1;justify-content:center}
+.sent{display:none;margin-top:1rem;font-size:.92rem;padding:.8rem .9rem;border-radius:8px;background:var(--chip)}
+.sent.show{display:block}
+.sent a{font-weight:700}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- One woodblock motif: an eight-petal flower with a dotted border ring -->
+    <symbol id="block" viewBox="0 0 100 100">
+      <g>
+        <circle cx="50" cy="50" r="7"/>
+        <g>
+          <ellipse cx="50" cy="28" rx="7" ry="13"/>
+          <ellipse cx="50" cy="72" rx="7" ry="13"/>
+          <ellipse cx="28" cy="50" rx="13" ry="7"/>
+          <ellipse cx="72" cy="50" rx="13" ry="7"/>
+          <ellipse cx="50" cy="28" rx="5" ry="11" transform="rotate(45 50 50)"/>
+          <ellipse cx="50" cy="72" rx="5" ry="11" transform="rotate(45 50 50)"/>
+          <ellipse cx="28" cy="50" rx="11" ry="5" transform="rotate(45 50 50)"/>
+          <ellipse cx="72" cy="50" rx="11" ry="5" transform="rotate(45 50 50)"/>
+        </g>
+        <g>
+          <circle cx="50" cy="5" r="2.4"/><circle cx="50" cy="95" r="2.4"/>
+          <circle cx="5" cy="50" r="2.4"/><circle cx="95" cy="50" r="2.4"/>
+          <circle cx="18" cy="18" r="2.4"/><circle cx="82" cy="18" r="2.4"/>
+          <circle cx="18" cy="82" r="2.4"/><circle cx="82" cy="82" r="2.4"/>
+        </g>
+      </g>
+    </symbol>
+    <symbol id="wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.29Z"/></symbol>
+  </defs>
+</svg>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="#top">Craft Commons <small>by Haati</small></a>
+    <nav aria-label="Main">
+      <a href="#sessions">Sessions</a>
+      <a href="#community">Community</a>
+      <a href="#groups">For groups</a>
+      <a href="#faq">Questions</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" style="padding:0" aria-labelledby="hero-title">
+    <svg class="print" id="print" aria-hidden="true" preserveAspectRatio="xMidYMid slice"></svg>
+    <div class="wrap" style="width:100%">
+      <div class="hero-panel">
+        <h1 id="hero-title">Learn a craft with your hands. Keep making with people nearby.</h1>
+        <p class="hero-lede">Small, beginner-friendly workshops in block printing, eco printing, crochet, candle making and more, led by Haati's artisans. Book a seat, then stay in the WhatsApp community for your next project.</p>
+        <div class="hero-actions">
+          <a class="btn btn-wa js-community" href="#" target="_blank" rel="noopener">
+            <svg class="wa-icon" aria-hidden="true"><use href="#wa"/></svg>Join the WhatsApp community
+          </a>
+          <a class="btn btn-light" href="#sessions">See upcoming sessions</a>
+        </div>
+        <p class="hero-note">Free to join. Materials are included in every workshop price.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="sessions" aria-labelledby="sessions-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2 id="sessions-title">Upcoming sessions</h2>
+          <p>Pick a session and send your booking on WhatsApp. We confirm your seat and share payment details in the same chat.</p>
+        </div>
+      </div>
+      <div class="filters" role="group" aria-label="Filter sessions">
+        <div class="filter-group" id="craft-filters"></div>
+        <span class="filter-sep" aria-hidden="true"></span>
+        <div class="filter-group" id="mode-filters"></div>
+      </div>
+      <ul class="sessions" id="session-list" aria-live="polite"></ul>
+    </div>
+  </section>
+
+  <section class="how" aria-labelledby="how-title">
+    <div class="wrap">
+      <h2 id="how-title">How booking works</h2>
+      <ol class="steps">
+        <li><h3>Choose a session</h3><p>Check the date, level and price. Every session lists what you'll make and what's provided.</p></li>
+        <li><h3>Send your booking on WhatsApp</h3><p>We prefill the message with the session and number of seats. You just press send.</p></li>
+        <li><h3>Pay and get confirmed</h3><p>We reply with payment details. Once paid, you get the venue or online link and a reminder the day before.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="community" id="community" aria-labelledby="community-title">
+    <div class="wrap grid">
+      <div>
+        <h2 id="community-title">The workshop is the start. The community is where you keep going.</h2>
+        <p class="lede">Join the Craft Commons community on WhatsApp to hear about new sessions first, get a next project after each workshop, and share what you've made.</p>
+        <a class="btn btn-join js-community" href="#" target="_blank" rel="noopener">
+          <svg class="wa-icon" aria-hidden="true"><use href="#wa"/></svg>Join the WhatsApp community
+        </a>
+        <p class="rules">Announcements are kept to a few a week. Your number is visible only to admins in the announcements group. Leave any time.</p>
+      </div>
+      <ul class="gets">
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+          <div><strong>New sessions before they fill</strong><span>Dates are posted in the community first, with a direct booking link.</span></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h11l5 5v11H4z"/><path d="M15 4v5h5M8 13h8M8 17h5"/></svg>
+          <div><strong>A next project after every workshop</strong><span>A short guide with materials, steps and a reuse or low-waste option.</span></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg>
+          <div><strong>Share what you made</strong><span>Post your finished piece and get tips from artisans and other makers.</span></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="9" r="3"/><circle cx="16" cy="9" r="3"/><path d="M2 20c0-3 3-5 6-5s6 2 6 5M12 20c0-3 3-5 6-5 1.5 0 3 .5 4 1.3"/></svg>
+          <div><strong>Monthly make-togethers</strong><span>Informal meetups to work on projects, swap materials and repair things.</span></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section aria-labelledby="crafts-title">
+    <div class="wrap">
+      <h2 id="crafts-title">Crafts we teach</h2>
+      <div class="crafts" id="craft-grid"></div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap split">
+      <div class="groups" id="groups">
+        <h2>Bring a group</h2>
+        <p>We run private sessions for schools, companies and friends. Tell us your group size, city, preferred date and craft, and we'll suggest a format.</p>
+        <a class="btn btn-ghost js-group" href="#" target="_blank" rel="noopener">
+          <svg class="wa-icon" aria-hidden="true"><use href="#wa"/></svg>Ask about a group session
+        </a>
+      </div>
+      <div id="faq">
+        <h2 style="margin-bottom:1.25rem">Questions</h2>
+        <details><summary>Do I need any experience?</summary><p>No. Sessions marked Beginner assume you've never tried the craft. Each session lists its level.</p></details>
+        <details><summary>What's included in the price?</summary><p>All materials and tools for the session, and the piece you make is yours to take home.</p></details>
+        <details><summary>Can I cancel or reschedule?</summary><p>Message us at least 48 hours before the session for a full refund or a move to another date. Within 48 hours, we can move you to another date if a seat is free.</p></details>
+        <details><summary>Are sessions suitable for children?</summary><p>Sessions marked Kids welcome are open to ages 8 and up with an accompanying adult.</p></details>
+        <details><summary>How do I pay?</summary><p>After you send your booking on WhatsApp, we reply with payment details. Your seat is held for 24 hours while you pay.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><strong>Craft Commons</strong><br>A community programme by Haati for learning sustainable crafts.</div>
+    <div>Questions? <a class="js-hello" href="#" target="_blank" rel="noopener">Message us on WhatsApp</a></div>
+  </div>
+</footer>
+
+<div class="mobile-cta">
+  <a class="btn btn-wa js-community" href="#" target="_blank" rel="noopener"><svg class="wa-icon" aria-hidden="true"><use href="#wa"/></svg>Join community</a>
+  <a class="btn btn-ghost" href="#sessions">Book a session</a>
+</div>
+
+<dialog id="book" aria-labelledby="book-title">
+  <div class="dlg-head">
+    <h2 id="book-title">Book a session</h2>
+    <p id="book-sub"></p>
+  </div>
+  <form class="dlg-body" id="book-form" novalidate>
+    <div class="field">
+      <label for="f-name">Your name</label>
+      <input id="f-name" name="name" autocomplete="name" required>
+      <p class="err" id="e-name">Enter your name so we know who's booking.</p>
+    </div>
+    <div class="field">
+      <label for="f-seats">Seats</label>
+      <select id="f-seats" name="seats"></select>
+    </div>
+    <div class="field">
+      <label for="f-note">Anything we should know? <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
+      <textarea id="f-note" name="note" placeholder="Access needs, a child joining, questions"></textarea>
+    </div>
+    <div class="total"><span>Total</span><span id="f-total"></span></div>
+    <p class="terms">You pay after we confirm your seat. Free cancellation up to 48 hours before the session.</p>
+    <div class="dlg-actions">
+      <button type="submit" class="btn btn-wa" id="send-btn"><svg class="wa-icon" aria-hidden="true"><use href="#wa"/></svg><span>Send booking on WhatsApp</span></button>
+      <button type="button" class="btn btn-ghost" id="close-btn">Cancel</button>
+    </div>
+    <p class="sent" id="sent" role="status"></p>
+  </form>
+</dialog>
+
+<script>
+/* ===== Edit these to go live ===== */
+const CONFIG = {
+  whatsappNumber: "91XXXXXXXXXX",                              // business number, country code first, digits only
+  communityLink: "https://chat.whatsapp.com/YOUR-INVITE-CODE", // WhatsApp Community invite link
+  currency: "₹"
+};
+
+const CRAFTS = [
+  {id:"block", name:"Block printing", blurb:"Carved wooden blocks and natural dyes on cotton."},
+  {id:"eco", name:"Eco printing", blurb:"Leaf and flower prints transferred onto fabric and paper."},
+  {id:"crochet", name:"Crochet", blurb:"Hooks, yarn and the stitches to start your first piece."},
+  {id:"candle", name:"Candle making", blurb:"Soy and beeswax candles in reused jars and tins."},
+  {id:"bamboo", name:"Bamboo weaving", blurb:"Split-bamboo baskets and trays with artisan weavers."},
+  {id:"dream", name:"Dreamcatchers", blurb:"Wall hangings from recovered thread, fabric and beads."}
+];
+
+/* Sample schedule — replace with real sessions */
+const SESSIONS = [
+  {id:"s1", craft:"block", title:"Block print a cotton tote", date:"2026-10-04", time:"11:00 am", duration:"3 hrs", mode:"In person", place:"Haati studio", price:1800, seats:4, level:"Beginner", kids:true},
+  {id:"s2", craft:"crochet", title:"Crochet basics: your first coaster set", date:"2026-10-07", time:"6:30 pm", duration:"2 hrs", mode:"Online", place:"Video call; kit posted to you", price:1200, seats:12, level:"Beginner", kids:false},
+  {id:"s3", craft:"eco", title:"Eco print a silk scarf with garden leaves", date:"2026-10-11", time:"10:30 am", duration:"4 hrs", mode:"In person", place:"Haati studio", price:2400, seats:2, level:"Beginner", kids:false},
+  {id:"s4", craft:"candle", title:"Soy candles in upcycled jars", date:"2026-10-18", time:"4:00 pm", duration:"2 hrs", mode:"In person", place:"Haati studio", price:1500, seats:0, level:"Beginner", kids:true},
+  {id:"s5", craft:"bamboo", title:"Weave a small bamboo tray", date:"2026-10-25", time:"11:00 am", duration:"3.5 hrs", mode:"In person", place:"Haati studio", price:2200, seats:7, level:"Some experience", kids:false},
+  {id:"s6", craft:"dream", title:"Dreamcatchers from recovered fabric", date:"2026-11-01", time:"3:00 pm", duration:"2.5 hrs", mode:"In person", place:"Haati studio", price:1400, seats:9, level:"Beginner", kids:true}
+];
+/* ================================= */
+
+const $ = s => document.querySelector(s);
+const craftName = id => (CRAFTS.find(c => c.id === id) || {}).name || id;
+const money = n => CONFIG.currency + n.toLocaleString("en-IN");
+const waLink = text => "https://wa.me/" + CONFIG.whatsappNumber.replace(/\D/g, "") + "?text=" + encodeURIComponent(text);
+const fmtDate = iso => { const d = new Date(iso + "T00:00:00"); return {
+  day: d.getDate(), mon: d.toLocaleDateString("en-IN",{month:"short"}),
+  long: d.toLocaleDateString("en-IN",{weekday:"long", day:"numeric", month:"long"}) }; };
+
+/* Links */
+document.querySelectorAll(".js-community").forEach(a => a.href = CONFIG.communityLink);
+$(".js-group").href = waLink("Hi Craft Commons! I'd like to ask about a group session.\nGroup type (school / company / friends): \nGroup size: \nCity: \nPreferred date: \nCraft: ");
+$(".js-hello").href = waLink("Hi Craft Commons! I have a question: ");
+
+/* Hand-stamped block print hero */
+(function stampHero(){
+  const svg = $("#print"), size = 90, cols = 22, rows = 11, reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  svg.setAttribute("viewBox", `0 0 ${cols*size} ${rows*size}`);
+  const ns = "http://www.w3.org/2000/svg";
+  let i = 0;
+  for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
+    const u = document.createElementNS(ns, "use");
+    u.setAttribute("href", "#block");
+    const jx = (Math.random() - .5) * 5, jy = (Math.random() - .5) * 5;
+    u.setAttribute("x", c*size + jx + (r % 2 ? size/2 : 0) - size/4);
+    u.setAttribute("y", r*size + jy);
+    u.setAttribute("width", size*.86); u.setAttribute("height", size*.86);
+    u.setAttribute("class", "stamp");
+    u.style.setProperty("--r", ((Math.random() - .5) * 5).toFixed(1) + "deg");
+    u.style.setProperty("--o", (.45 + Math.random() * .45).toFixed(2));
+    if (!reduce) u.style.animationDelay = ((c + r) * 45 + Math.random()*60) + "ms";
+    svg.appendChild(u); i++;
+  }
+})();
+
+/* Filters */
+const state = { craft:"all", mode:"all" };
+function chips(el, key, options){
+  el.innerHTML = "";
+  options.forEach(([val,label]) => {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "chip"; b.textContent = label;
+    b.setAttribute("aria-pressed", state[key] === val);
+    b.onclick = () => { state[key] = val; render(); };
+    el.appendChild(b);
+  });
+}
+
+function render(){
+  const used = [...new Set(SESSIONS.map(s => s.craft))];
+  chips($("#craft-filters"), "craft", [["all","All crafts"], ...used.map(id => [id, craftName(id)])]);
+  chips($("#mode-filters"), "mode", [["all","Online and in person"],["In person","In person"],["Online","Online"]]);
+  const list = $("#session-list");
+  const items = SESSIONS
+    .filter(s => (state.craft === "all" || s.craft === state.craft) && (state.mode === "all" || s.mode === state.mode))
+    .sort((a,b) => a.date.localeCompare(b.date));
+  list.innerHTML = "";
+  if (!items.length){
+    list.innerHTML = `<li class="empty">No ${state.mode === "all" ? "" : state.mode.toLowerCase() + " "}sessions for this craft yet. New dates are posted in the WhatsApp community first.<br><button class="chip" type="button" id="clear">Show all sessions</button></li>`;
+    $("#clear").onclick = () => { state.craft = "all"; state.mode = "all"; render(); };
+    return;
+  }
+  items.forEach(s => {
+    const d = fmtDate(s.date), full = s.seats === 0;
+    const li = document.createElement("li");
+    li.className = "session";
+    li.innerHTML = `
+      <div class="date"><span class="d">${d.day}</span><span class="m">${d.mon}</span></div>
+      <div>
+        <h3 class="s-title">${s.title}</h3>
+        <div class="s-meta"><span>${d.long}, ${s.time}</span><span>${s.duration}</span><span>${s.mode}: ${s.place}</span></div>
+        <div class="s-tags"><span class="tag">${craftName(s.craft)}</span><span class="tag">${s.level}</span>${s.kids ? '<span class="tag">Kids welcome</span>' : ""}</div>
+      </div>
+      <div class="s-side">
+        <span class="price">${money(s.price)}</span>
+        <span class="seats ${s.seats && s.seats <= 3 ? "low" : ""}">${full ? "Full" : s.seats === 1 ? "1 seat left" : s.seats + " seats left"}</span>
+        <button class="book-btn ${full ? "wait" : ""}" type="button">${full ? "Join waitlist" : "Book"}</button>
+      </div>`;
+    li.querySelector("button").onclick = () => openBooking(s);
+    list.appendChild(li);
+  });
+}
+
+/* Booking dialog */
+const dlg = $("#book"), form = $("#book-form");
+let current = null;
+function openBooking(s){
+  current = s;
+  const d = fmtDate(s.date), full = s.seats === 0;
+  $("#book-title").textContent = full ? "Join the waitlist" : "Book a session";
+  $("#book-sub").textContent = `${s.title}. ${d.long}, ${s.time}. ${s.mode}: ${s.place}.`;
+  const max = full ? 4 : Math.min(s.seats, 6);
+  $("#f-seats").innerHTML = Array.from({length:max}, (_,i) => `<option value="${i+1}">${i+1}</option>`).join("");
+  $("#send-btn span").textContent = full ? "Send waitlist request on WhatsApp" : "Send booking on WhatsApp";
+  $("#sent").className = "sent"; $("#e-name").className = "err"; $("#f-name").removeAttribute("aria-invalid");
+  updateTotal();
+  dlg.showModal();
+  $("#f-name").focus();
+}
+function updateTotal(){ if (current) $("#f-total").textContent = money(current.price * +$("#f-seats").value); }
+$("#f-seats").addEventListener("change", updateTotal);
+$("#close-btn").onclick = () => dlg.close();
+dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+
+form.addEventListener("submit", e => {
+  e.preventDefault();
+  const name = $("#f-name").value.trim();
+  if (!name){ $("#e-name").className = "err show"; $("#f-name").setAttribute("aria-invalid","true"); $("#f-name").focus(); return; }
+  $("#e-name").className = "err"; $("#f-name").removeAttribute("aria-invalid");
+  const s = current, d = fmtDate(s.date), seats = +$("#f-seats").value, note = $("#f-note").value.trim();
+  const lines = [
+    s.seats === 0 ? "Hi Craft Commons! Please add me to the waitlist:" : "Hi Craft Commons! I'd like to book:",
+    `Session: ${s.title}`,
+    `Date: ${d.long}, ${s.time}`,
+    `Where: ${s.mode} (${s.place})`,
+    `Seats: ${seats}`,
+    `Total: ${money(s.price * seats)}`,
+    `Name: ${name}`
+  ];
+  if (note) lines.push(`Note: ${note}`);
+  const url = waLink(lines.join("\n"));
+  const w = window.open(url, "_blank", "noopener");
+  const sent = $("#sent");
+  sent.innerHTML = `WhatsApp should open with your booking message. If it didn't, <a href="${url}" target="_blank" rel="noopener">open WhatsApp here</a>.`;
+  sent.className = "sent show";
+});
+
+/* Crafts grid */
+$("#craft-grid").innerHTML = CRAFTS.map(c => `<div class="craft"><h3>${c.name}</h3><p>${c.blurb}</p></div>`).join("");
+
+render();
+</script>
+</body>
+</html>
