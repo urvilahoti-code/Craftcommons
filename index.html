@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Craft Commons — sustainable craft workshops by Haati</title>
+<title>Craft Commons: sustainable craft workshops and community</title>
 <meta name="description" content="Book a sustainable craft workshop and join the Craft Commons WhatsApp community to keep making after the session ends.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -71,7 +71,7 @@ p{margin:0}
 @keyframes stamp{0%{opacity:0;transform:scale(1.18)}60%{opacity:.95}100%{opacity:var(--o,.8);transform:scale(1) rotate(var(--r,0deg))}}
 @media (prefers-reduced-motion: reduce){.print .stamp{animation:none;opacity:var(--o,.8);transform:rotate(var(--r,0deg))}}
 .hero-panel{position:relative;z-index:2;background:var(--indigo);padding:2.25rem 1.75rem 2.5rem;margin:6rem 0 0;max-width:37rem;border-top:6px solid var(--turmeric)}
-.hero h1{font-size:clamp(2.4rem,6vw,4.1rem);letter-spacing:-.01em}
+.hero h1{font-size:clamp(2.1rem,4.6vw,3.3rem);letter-spacing:-.01em}
 .hero-lede{margin-top:1.1rem;font-size:1.15rem;max-width:32rem;color:#E4E7F5}
 .hero-actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.75rem}
 .hero-note{margin-top:1.1rem;font-size:.9rem;color:#C3C9E6}
@@ -118,6 +118,7 @@ section{padding:4.5rem 0}
 .steps li::before{content:counter(s);position:absolute;top:0;left:0;font-family:var(--serif);font-size:2.4rem;line-height:1;color:var(--turmeric)}
 .steps h3{font-size:1.3rem;margin-bottom:.5rem}
 .steps p{color:var(--muted)}
+.programme-lede{color:var(--muted);max-width:34rem;margin-top:.6rem}
 @media (max-width:760px){.steps{grid-template-columns:1fr;gap:1.5rem}}
 
 /* Community */
@@ -135,6 +136,18 @@ section{padding:4.5rem 0}
 .gets span{color:#D4ECE0;font-size:.97rem}
 .rules{margin-top:1.25rem;font-size:.9rem;color:#CBE7D9}
 @media (max-width:800px){.community .grid{grid-template-columns:1fr;gap:2rem}}
+
+/* Prices */
+.prices{list-style:none;margin:0;padding:0;border-top:1.5px solid var(--ink)}
+.prices li{display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:start;padding:1.4rem 0;border-bottom:1px solid var(--line)}
+.prices h3{font-size:1.35rem}
+.prices p{color:var(--muted);margin-top:.35rem;max-width:36rem}
+.amt{font-family:var(--serif);font-size:1.7rem;text-align:right;line-height:1.1;white-space:nowrap}
+.amt small{display:block;font-family:var(--sans);font-size:.85rem;color:var(--muted);margin-top:.3rem}
+.prices .member{background:var(--surface);border-left:6px solid var(--turmeric);padding:1.6rem 1.25rem;margin:.5rem 0}
+.prices .member .btn{margin-top:1.1rem}
+.member-price{font-size:.85rem;color:var(--leaf);font-weight:700}
+@media (max-width:640px){.prices li{grid-template-columns:1fr;gap:.6rem}.amt{text-align:left}}
 
 /* Crafts */
 .crafts{display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:0;border-top:1px solid var(--line);border-left:1px solid var(--line);margin-top:2rem}
@@ -222,8 +235,10 @@ dialog::backdrop{background:rgba(15,20,50,.6)}
 
 <header class="bar">
   <div class="wrap">
-    <a class="brand" href="#top">Craft Commons <small>by Haati</small></a>
+    <a class="brand" href="#top">Craft Commons</a>
     <nav aria-label="Main">
+      <a href="#programme">How it works</a>
+      <a href="#pricing">Prices</a>
       <a href="#sessions">Sessions</a>
       <a href="#community">Community</a>
       <a href="#groups">For groups</a>
@@ -237,16 +252,53 @@ dialog::backdrop{background:rgba(15,20,50,.6)}
     <svg class="print" id="print" aria-hidden="true" preserveAspectRatio="xMidYMid slice"></svg>
     <div class="wrap" style="width:100%">
       <div class="hero-panel">
-        <h1 id="hero-title">Learn a craft with your hands. Keep making with people nearby.</h1>
-        <p class="hero-lede">Small, beginner-friendly workshops in block printing, eco printing, crochet, candle making and more, led by Haati's artisans. Book a seat, then stay in the WhatsApp community for your next project.</p>
+        <h1 id="hero-title">That saree you can't bring yourself to throw away? Let's give it a second life.</h1>
+        <p class="hero-lede">Craft Commons is sustainable craft sessions taught by skilled artisans, using things you already own. No new kits. No new stuff. Just skills that make what you love last longer.</p>
         <div class="hero-actions">
+          <a class="btn btn-light" href="#sessions">Book a workshop from ₹999</a>
           <a class="btn btn-wa js-community" href="#" target="_blank" rel="noopener">
             <svg class="wa-icon" aria-hidden="true"><use href="#wa"/></svg>Join the WhatsApp community
           </a>
-          <a class="btn btn-light" href="#sessions">See upcoming sessions</a>
         </div>
-        <p class="hero-note">Free to join. Materials are included in every workshop price.</p>
+        <p class="hero-note">Online from anywhere in India, and in person in select cities. Seats are limited. Artisans are paid fairly for every session they teach.</p>
       </div>
+    </div>
+  </section>
+
+  <section class="how" id="programme" aria-labelledby="programme-title">
+    <div class="wrap">
+      <h2 id="programme-title">Start with one workshop. Stay for the habit.</h2>
+      <p class="programme-lede">Most craft workshops end when the session does. Craft Commons is built so you keep repairing and remaking what you already own, whether you join online from anywhere in India or in person in your city.</p>
+      <ol class="steps">
+        <li><h3>Start: a 2-hour workshop</h3><p>Try a craft with an artisan for ₹999 online or ₹1,499 in person. Bring an item you'd like to rework, such as an old saree, a dupatta or a glass jar.</p></li>
+        <li><h3>Deepen: Repair &amp; Remake</h3><p>A 4-week cohort for ₹2,999. One artisan-led session a week to mend, upcycle and remake clothes, textiles and home pieces you already own.</p></li>
+        <li><h3>Stay: annual membership</h3><p>₹1,500 a year for 15% off every session, first access to new dates, monthly swap meetups and a next project after every session.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="pricing" aria-labelledby="pricing-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2 id="pricing-title">Prices</h2>
+          <p>Pay per session, commit to a cohort, or become a member and save on everything you book.</p>
+        </div>
+      </div>
+      <ul class="prices">
+        <li><div><h3>Online workshop</h3><p>A 2-hour live session on video call, using materials you have at home.</p></div><span class="amt">₹999<small>per session</small></span></li>
+        <li><div><h3>In-person workshop</h3><p>A 2-hour session with an artisan in your city. Tools, blocks, dyes and thread provided.</p></div><span class="amt">₹1,499<small>per session</small></span></li>
+        <li><div><h3>Repair &amp; Remake cohort</h3><p>Four weekly artisan-led sessions to mend, upcycle and remake things you already own.</p></div><span class="amt">₹2,999<small>for 4 weeks</small></span></li>
+        <li class="member">
+          <div>
+            <h3>Annual membership</h3>
+            <p>15% off every workshop and cohort, first access to new dates 48 hours before everyone else, monthly swap meetups and make-togethers, and a next-project guide after every session.</p>
+            <a class="btn btn-wa js-member" href="#" target="_blank" rel="noopener"><svg class="wa-icon" aria-hidden="true"><use href="#wa"/></svg>Become a member</a>
+          </div>
+          <span class="amt">₹1,500<small>per year</small></span>
+        </li>
+        <li><div><h3>Groups and companies</h3><p>Private sessions for teams, schools and friends, online or in person. Minimum 15 people.</p></div><span class="amt">From ₹1,800<small>per person</small></span></li>
+      </ul>
     </div>
   </section>
 
@@ -282,7 +334,7 @@ dialog::backdrop{background:rgba(15,20,50,.6)}
     <div class="wrap grid">
       <div>
         <h2 id="community-title">The workshop is the start. The community is where you keep going.</h2>
-        <p class="lede">Join the Craft Commons community on WhatsApp to hear about new sessions first, get a next project after each workshop, and share what you've made.</p>
+        <p class="lede">The Craft Commons WhatsApp community is free to join. Hear about new sessions, share what you've made, and get tips from artisans and other makers. Members get more.</p>
         <a class="btn btn-join js-community" href="#" target="_blank" rel="noopener">
           <svg class="wa-icon" aria-hidden="true"><use href="#wa"/></svg>Join the WhatsApp community
         </a>
@@ -291,11 +343,11 @@ dialog::backdrop{background:rgba(15,20,50,.6)}
       <ul class="gets">
         <li>
           <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
-          <div><strong>New sessions before they fill</strong><span>Dates are posted in the community first, with a direct booking link.</span></div>
+          <div><strong>New session dates</strong><span>Every date is posted in the community with a direct booking link. Members see them 48 hours earlier.</span></div>
         </li>
         <li>
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h11l5 5v11H4z"/><path d="M15 4v5h5M8 13h8M8 17h5"/></svg>
-          <div><strong>A next project after every workshop</strong><span>A short guide with materials, steps and a reuse or low-waste option.</span></div>
+          <div><strong>Members: a next project after every session</strong><span>A short guide with materials, steps and a reuse or low-waste option.</span></div>
         </li>
         <li>
           <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg>
@@ -303,7 +355,7 @@ dialog::backdrop{background:rgba(15,20,50,.6)}
         </li>
         <li>
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="9" r="3"/><circle cx="16" cy="9" r="3"/><path d="M2 20c0-3 3-5 6-5s6 2 6 5M12 20c0-3 3-5 6-5 1.5 0 3 .5 4 1.3"/></svg>
-          <div><strong>Monthly make-togethers</strong><span>Informal meetups to work on projects, swap materials and repair things.</span></div>
+          <div><strong>Members: monthly make-togethers</strong><span>Meetups to work on projects, swap materials and repair things. Included in the ₹1,500 annual membership.</span></div>
         </li>
       </ul>
     </div>
@@ -327,8 +379,9 @@ dialog::backdrop{background:rgba(15,20,50,.6)}
       </div>
       <div id="faq">
         <h2 style="margin-bottom:1.25rem">Questions</h2>
+        <details><summary>Is the membership worth it?</summary><p>Members pay ₹1,500 a year and get 15% off every workshop and cohort, early access to new dates, monthly swap meetups and make-togethers, and a next-project guide after every session. If you plan to keep crafting after your first workshop, it adds up quickly.</p></details>
         <details><summary>Do I need any experience?</summary><p>No. Sessions marked Beginner assume you've never tried the craft. Each session lists its level.</p></details>
-        <details><summary>What's included in the price?</summary><p>All materials and tools for the session, and the piece you make is yours to take home.</p></details>
+        <details><summary>What do I need to bring?</summary><p>An item you already own that you'd like to repair or remake. We provide the tools, blocks, dyes and thread. When you book, tell us what you're bringing and we'll confirm it works for the session.</p></details>
         <details><summary>Can I cancel or reschedule?</summary><p>Message us at least 48 hours before the session for a full refund or a move to another date. Within 48 hours, we can move you to another date if a seat is free.</p></details>
         <details><summary>Are sessions suitable for children?</summary><p>Sessions marked Kids welcome are open to ages 8 and up with an accompanying adult.</p></details>
         <details><summary>How do I pay?</summary><p>After you send your booking on WhatsApp, we reply with payment details. Your seat is held for 24 hours while you pay.</p></details>
@@ -339,7 +392,7 @@ dialog::backdrop{background:rgba(15,20,50,.6)}
 
 <footer>
   <div class="wrap">
-    <div><strong>Craft Commons</strong><br>A community programme by Haati for learning sustainable crafts.</div>
+    <div><strong>Craft Commons</strong><br>Learn sustainable crafts from artisans. Keep making with your community.</div>
     <div>Questions? <a class="js-hello" href="#" target="_blank" rel="noopener">Message us on WhatsApp</a></div>
   </div>
 </footer>
@@ -383,10 +436,12 @@ dialog::backdrop{background:rgba(15,20,50,.6)}
 const CONFIG = {
   whatsappNumber: "91XXXXXXXXXX",                              // business number, country code first, digits only
   communityLink: "https://chat.whatsapp.com/YOUR-INVITE-CODE", // WhatsApp Community invite link
-  currency: "₹"
+  currency: "₹",
+  memberDiscount: 0.15
 };
 
 const CRAFTS = [
+  {id:"repair", name:"Mending and upcycling", blurb:"Visible mending, patching and remaking clothes and home textiles."},
   {id:"block", name:"Block printing", blurb:"Carved wooden blocks and natural dyes on cotton."},
   {id:"eco", name:"Eco printing", blurb:"Leaf and flower prints transferred onto fabric and paper."},
   {id:"crochet", name:"Crochet", blurb:"Hooks, yarn and the stitches to start your first piece."},
@@ -397,12 +452,12 @@ const CRAFTS = [
 
 /* Sample schedule — replace with real sessions */
 const SESSIONS = [
-  {id:"s1", craft:"block", title:"Block print a cotton tote", date:"2026-10-04", time:"11:00 am", duration:"3 hrs", mode:"In person", place:"Haati studio", price:1800, seats:4, level:"Beginner", kids:true},
-  {id:"s2", craft:"crochet", title:"Crochet basics: your first coaster set", date:"2026-10-07", time:"6:30 pm", duration:"2 hrs", mode:"Online", place:"Video call; kit posted to you", price:1200, seats:12, level:"Beginner", kids:false},
-  {id:"s3", craft:"eco", title:"Eco print a silk scarf with garden leaves", date:"2026-10-11", time:"10:30 am", duration:"4 hrs", mode:"In person", place:"Haati studio", price:2400, seats:2, level:"Beginner", kids:false},
-  {id:"s4", craft:"candle", title:"Soy candles in upcycled jars", date:"2026-10-18", time:"4:00 pm", duration:"2 hrs", mode:"In person", place:"Haati studio", price:1500, seats:0, level:"Beginner", kids:true},
-  {id:"s5", craft:"bamboo", title:"Weave a small bamboo tray", date:"2026-10-25", time:"11:00 am", duration:"3.5 hrs", mode:"In person", place:"Haati studio", price:2200, seats:7, level:"Some experience", kids:false},
-  {id:"s6", craft:"dream", title:"Dreamcatchers from recovered fabric", date:"2026-11-01", time:"3:00 pm", duration:"2.5 hrs", mode:"In person", place:"Haati studio", price:1400, seats:9, level:"Beginner", kids:true}
+  {id:"s1", craft:"block", title:"Block print an old cotton saree or dupatta", date:"2026-10-17", time:"11:00 am", duration:"2 hrs", mode:"In person", place:"Kolkata", price:1499, seats:4, level:"Beginner", kids:true},
+  {id:"s2", craft:"crochet", title:"Crochet basics with yarn you already have", date:"2026-10-21", time:"6:30 pm", duration:"2 hrs", mode:"Online", place:"Video call; bring your own yarn", price:999, seats:12, level:"Beginner", kids:false},
+  {id:"s3", craft:"candle", title:"Candles in jars you already have", date:"2026-10-24", time:"4:00 pm", duration:"2 hrs", mode:"In person", place:"Bengaluru", price:1499, seats:0, level:"Beginner", kids:true},
+  {id:"s4", craft:"eco", title:"Eco print a faded scarf with garden leaves", date:"2026-10-31", time:"10:30 am", duration:"2 hrs", mode:"In person", place:"Mumbai", price:1499, seats:2, level:"Beginner", kids:false},
+  {id:"s5", craft:"repair", title:"Repair & Remake: 4-week cohort", date:"2026-11-07", time:"11:00 am", duration:"4 Saturdays, 2.5 hrs each", mode:"Online", place:"Video call; bring the items you want to remake", price:2999, seats:8, level:"Beginner", kids:false},
+  {id:"s6", craft:"bamboo", title:"Weave a small bamboo tray", date:"2026-11-14", time:"11:00 am", duration:"2 hrs", mode:"In person", place:"Delhi", price:1499, seats:7, level:"Some experience", kids:false}
 ];
 /* ================================= */
 
@@ -417,6 +472,7 @@ const fmtDate = iso => { const d = new Date(iso + "T00:00:00"); return {
 /* Links */
 document.querySelectorAll(".js-community").forEach(a => a.href = CONFIG.communityLink);
 $(".js-group").href = waLink("Hi Craft Commons! I'd like to ask about a group session.\nGroup type (school / company / friends): \nGroup size: \nCity: \nPreferred date: \nCraft: ");
+$(".js-member").href = waLink("Hi Craft Commons! I'd like to become a member (₹1,500 a year).\nName: \nCity: ");
 $(".js-hello").href = waLink("Hi Craft Commons! I have a question: ");
 
 /* Hand-stamped block print hero */
@@ -479,7 +535,7 @@ function render(){
         <div class="s-tags"><span class="tag">${craftName(s.craft)}</span><span class="tag">${s.level}</span>${s.kids ? '<span class="tag">Kids welcome</span>' : ""}</div>
       </div>
       <div class="s-side">
-        <span class="price">${money(s.price)}</span>
+        <span class="price">${money(s.price)}</span><span class="member-price">Members ${money(Math.round(s.price * (1 - CONFIG.memberDiscount)))}</span>
         <span class="seats ${s.seats && s.seats <= 3 ? "low" : ""}">${full ? "Full" : s.seats === 1 ? "1 seat left" : s.seats + " seats left"}</span>
         <button class="book-btn ${full ? "wait" : ""}" type="button">${full ? "Join waitlist" : "Book"}</button>
       </div>`;
